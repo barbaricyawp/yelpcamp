@@ -8,19 +8,18 @@ var express         = require('express'),
     flash           = require('connect-flash'),
     
     // MODELS
-    seedDB      = require("./seeds"),
-    Campground  = require("./models/campground"),
-    Comment     = require("./models/comment"),
+    Restaurant  = require("./models/restaurant"),
+    Review     = require("./models/review"),
     User        = require("./models/user"),
     
     // ROUTES
-    commentRoutes       = require("./routes/comments"),
-    campgroundRoutes    = require("./routes/campgrounds"),
+    reviewRoutes       = require("./routes/reviews"),
+    restaurantRoutes    = require("./routes/restaurants"),
     indexRoutes         = require("./routes/index");
 
 // DB CONFIG    
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
+mongoose.connect("mongodb://localhost/restaurant_project", {useMongoClient: true});
 
 // MISC
 app.use(bodyParser.urlencoded({extended: true}));    
@@ -28,8 +27,6 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
-
-// seedDB(); // SEED THE DATABASE
 
 // PASSPORT CONFIG
 app.use(require('express-session')({
@@ -52,8 +49,8 @@ app.use(function(req, res, next){
 
 // ROUTE CONFIG
 app.use("/", indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/restaurants", restaurantRoutes);
+app.use("/restaurants/:id/reviews", reviewRoutes);
 
 // RUN SERVER
 app.listen(process.env.PORT, process.env.IP, function(){

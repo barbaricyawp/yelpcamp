@@ -27,8 +27,8 @@ router.post("/register", function(req, res){
             return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, function(){
-            req.flash("success", "Welcome to YelpCamp, " + user.username + "!");
-            res.redirect("/campgrounds");
+            req.flash("success", "Welcome to 2Dinein, " + user.username + "!");
+            res.redirect("/restaurants");
         });
     });
 });
@@ -41,7 +41,7 @@ router.get("/login", function(req, res){
 // POST LOGIN ROUTE
 router.post("/login", passport.authenticate("local", 
     {
-        successRedirect: "/campgrounds", 
+        successRedirect: "/restaurants", 
         failureRedirect: "/login"
     }), function(req, res){
 });
@@ -50,7 +50,7 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res){
     req.logout();
     req.flash("success", "You have been logged out!")
-    res.redirect("/campgrounds");
+    res.redirect("/restaurants");
 });
 
 module.exports = router;

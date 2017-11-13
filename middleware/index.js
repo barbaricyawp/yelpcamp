@@ -1,15 +1,15 @@
-var Campground = require("../models/campground");
-var Comment = require("../models/comment");
+var Restaurant = require("../models/restaurant");
+var Review = require("../models/review");
 var middlewareObj = {};
 
-middlewareObj.checkCampgroundOwnership = function(req, res, next){
+middlewareObj.checkRestaurantOwnership = function(req, res, next){
     if (req.isAuthenticated()){
-        Campground.findById(req.params.id, function(err, foundCampground){
+        Restaurant.findById(req.params.id, function(err, foundRestaurant){
             if(err){
-                req.flash("error", "DB ERROR: Campground not found!");
+                req.flash("error", "DB ERROR: Restaurant not found!");
                 res.redirect("back");
             } else {
-                if (foundCampground.author.id.equals(req.user._id)) {
+                if (foundRestaurant.author.id.equals(req.user._id)) {
                     next();
                 } else {
                     req.flash("error", "You don't have permission to do that!");
@@ -23,14 +23,14 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next){
     }
 };
 
-middlewareObj.checkCommentOwnership = function(req, res, next){
+middlewareObj.checkReviewOwnership = function(req, res, next){
     if (req.isAuthenticated()){
-        Comment.findById(req.params.comment_id, function(err, foundComment){
+        Review.findById(req.params.review_id, function(err, foundReview){
             if(err){
-                req.flash("error", "DB ERROR: Comment not found!");
+                req.flash("error", "DB ERROR: Review not found!");
                 res.redirect("back");
             } else {
-                if (foundComment.author.id.equals(req.user._id)) {
+                if (foundReview.author.id.equals(req.user._id)) {
                     next();
                 } else {
                     req.flash("error", "You don't have permission to do that!");
