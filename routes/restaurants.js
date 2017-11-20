@@ -29,12 +29,11 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             id: req.user._id,
             username: req.user.username
         };
-    var yelpAddress = req.body.yelpAddress;
     geocoder.geocode(req.body.location, function(err, data){
        var lat = data.results[0].geometry.location.lat;
        var lng = data.results[0].geometry.location.lng;
        var location = data.results[0].formatted_address;
-       var newRestaurant = {name: name, image: image, description: desc, cost: cost, author:author, yelpAddress: yelpAddress, location: location, lat: lat, lng: lng};
+       var newRestaurant = {name: name, image: image, description: desc, cost: cost, author:author, location: location, lat: lat, lng: lng};
        Restaurant.create(newRestaurant, function(err, newlyCreated){
            if(err){
                console.log(err);

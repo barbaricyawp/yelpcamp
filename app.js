@@ -13,8 +13,9 @@ var express         = require('express'),
     User        = require("./models/user"),
     
     // ROUTES
-    reviewRoutes       = require("./routes/reviews"),
+    reviewRoutes        = require("./routes/reviews"),
     restaurantRoutes    = require("./routes/restaurants"),
+    adminRoutes         = require("./routes/admin"),
     indexRoutes         = require("./routes/index");
 
 // DB CONFIG    
@@ -51,6 +52,7 @@ app.use(function(req, res, next){
 app.use("/", indexRoutes);
 app.use("/restaurants", restaurantRoutes);
 app.use("/restaurants/:id/reviews", reviewRoutes);
+app.use("/admin", adminRoutes);
 
 // RUN SERVER
 app.listen(process.env.PORT, process.env.IP, function(){
