@@ -8,6 +8,7 @@ var restaurantSchema = new mongoose.Schema({
    location: String,
    lat: Number,
    lng: Number,
+   yelpAddress: String,
    author: {
       id: {
          type: mongoose.Schema.Types.ObjectId,
