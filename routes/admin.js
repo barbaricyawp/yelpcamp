@@ -13,7 +13,7 @@ router.get("/userlist", function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("admin/user_list", {user:allUsers});
+            res.render("admin/user_list", {user: allUsers});
         }
     });
 });
