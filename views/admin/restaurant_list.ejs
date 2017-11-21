@@ -3,23 +3,23 @@
 <div class="container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading">User List</div>
+        <div class="panel-heading">Restaurant List</div>
         <!-- Table -->
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Username</th>
-                    <th>Permission Level</th>
+                    <th>Restaurant</th>
+                    <th>Created By</th>
                 </tr>
             </thead>
             <tbody>
             <% var counter = 1; %>
-            <% user.forEach(function(user){ %>
+            <% user.forEach(function(restaurant){ %>
                 <tr>
                     <td><%= counter %></td>
-                    <td><%= user.username %></td>
-                    <td><%= user.permissions %>
+                    <td><%= restaurant.name %></td>
+                    <td><%= restaurant.author.username %>
                         <span class="pull-right">
                             <button class="btn btn-xs btn-warning">Edit</button>
                             <button class="btn btn-xs btn-danger">Delete</button>
