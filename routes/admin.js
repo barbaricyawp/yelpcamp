@@ -29,4 +29,8 @@ router.get("/restaurantlist", function(req, res){
     });
 });
 
+router.get("/stats", function(req, res){
+    res.render("admin/stats");
+})
+
 module.exports = router;
