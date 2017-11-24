@@ -12,6 +12,10 @@ router.get("/home", function(req, res){
     res.render("home");
 });
 
+router.get("/help/faq", function(req, res){
+    res.render("help/faq");
+});
+
 
 // ===========
 // AUTH ROUTES
