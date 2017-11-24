@@ -21,6 +21,12 @@ var restaurantSchema = new mongoose.Schema({
          type: mongoose.Schema.Types.ObjectId,
          ref: "Review"
       }
-   ]
+   ],
+   orders: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Order"
+        }
+    ]
 });
 module.exports = mongoose.model("Restaurant", restaurantSchema);

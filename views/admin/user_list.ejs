@@ -15,8 +15,10 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Username</th>
-                    <th>Permission Level</th>
+                    <th>Role</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,8 +26,10 @@
             <% user.forEach(function(user){ %>
                 <tr>
                     <td><%= counter %></td>
+                    <td><%= user.firstName %></td>
+                    <td><%= user.lastName %></td>
                     <td><%= user.username %></td>
-                    <td><%= user.permissions %>
+                    <td><%= user.role %>
                         <span class="pull-right">
                             <button class="btn btn-xs btn-warning">Edit</button>
                             <button class="btn btn-xs btn-danger">Delete</button>
