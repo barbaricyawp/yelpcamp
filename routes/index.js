@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require("../models/user");
+var Restaurant  = require("../models/restaurant");
 
 // ROOT ROUTE
 router.get("/", function(req, res){
@@ -9,7 +10,13 @@ router.get("/", function(req, res){
 });
 
 router.get("/home", function(req, res){
-    res.render("home");
+    Restaurant.find({}, function(err, allRestaurants){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("home", {restaurant:allRestaurants, currentUser: req.user});
+        }
+    });
 });
 
 router.get("/help/faq", function(req, res){

@@ -20,6 +20,11 @@
     width: 100%;
 }
 
+#homepageMap {
+  height: 450px;
+  width: 450px;
+}
+
 .glyphicon {
     margin-right: 10px;
 }

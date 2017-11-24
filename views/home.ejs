@@ -15,9 +15,9 @@
           <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <h1><%=restaurant.length%> restaurants to choose from</h1>
+              <p>Every cuisine in Portland. Why get pizza again?</p>
+              <p><a class="btn btn-lg btn-primary" href="/restaurants" role="button">View all Restaurants</a></p>
             </div>
           </div>
         </div>
@@ -90,11 +90,10 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <h2 class="featurette-heading"><%=restaurant.length%> restaurants to choose from. <span class="text-muted">Any cuisine.</span></h2>
           <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <div class="col-md-5" id="homepageMap">
         </div>
       </div>
 
@@ -124,5 +123,26 @@
 
       <hr class="featurette-divider">
     </div>
+    
+    <script>
+      function initMap() {
+        var lat = 43.653959;
+        var lng = -70.263182;
+        var center = {lat: lat, lng: lng };
+        var map = new google.maps.Map(document.getElementById('homepageMap'), {
+            zoom: 12,
+            center: center,
+            scrollwheel: false
+        });
+        restaurant.forEach(function(restaurant){
+          var restaurantLocation = {lat: restaurant.lat, lng: restaurant.lng};
+          var marker = new google.maps.Marker({
+            position: restaurantLocation,
+            map: map
+          });
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSFnA2kA0xsXzURx0ADLYoV1iJmUA_t0s&callback=initMap"></script>
 
     <%include partials/footer%>
