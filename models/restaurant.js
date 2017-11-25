@@ -8,6 +8,7 @@ var restaurantSchema = new mongoose.Schema({
    location: String,
    lat: Number,
    lng: Number,
+   createdAt: {type: Date, defaut: Date.now},
    yelpAddress: String,
    author: {
       id: {

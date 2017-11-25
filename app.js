@@ -47,6 +47,7 @@ app.use(function(req, res, next){
     res.locals.success = req.flash("success");
     next();
 });
+app.locals.moment = require('moment');
 
 // ROUTE CONFIG
 app.use("/", indexRoutes);
@@ -56,6 +57,6 @@ app.use("/admin", adminRoutes);
 
 // RUN SERVER
 app.listen(process.env.PORT, process.env.IP, function(){
-   console.log("YelpCamp Server has Started!");
+   console.log("Server has Started...");
 });
 
