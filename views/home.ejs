@@ -12,7 +12,7 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+          <img class="first-slide" src="https://static.pexels.com/photos/76093/pexels-photo-76093.jpeg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
               <h1><%=restaurant.length%> restaurants to choose from</h1>
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="item">
-          <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+          <img class="second-slide" src="https://static.pexels.com/photos/568370/pexels-photo-568370.jpeg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>Another example headline.</h1>
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="item">
-          <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+          <img class="third-slide" src="https://static.pexels.com/photos/461359/pexels-photo-461359.jpeg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>One more for good measure.</h1>
@@ -126,6 +126,7 @@
     
     <script>
       function initMap() {
+        var restaurant = JSON.parse('<%- restaurantJSON %>');
         var lat = 43.653959;
         var lng = -70.263182;
         var center = {lat: lat, lng: lng };

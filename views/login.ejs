@@ -1,27 +1,30 @@
-<%include ./partials/header%>
-
-    <div class="container">
-        <div class="row">
-            <h1 style="text-align: center;">Login</h1>
-            <div style="width: 30%; margin: 25px auto;">
-                <form action="/login" method="POST">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input class="form-control" type="text" name="username" placeholder="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input class="form-control" type="password" name ="password" placeholder="password">
-                    <div class="form-group">
-                        <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                    </div>
-                </form>
-                <h4>Don't have an account? <a href="/register">Register!</a></h4>
-                <h4><a href="/restaurants">Go Back</a></h4>
+<main class="viewheight-class">
+    <%include ./partials/header%>
+    
+        <div class="container">
+            <div class="row">
+                <h1 style="text-align: center;">Login</h1>
+                <div style="width: 30%; margin: 25px auto;">
+                    <form action="/login" method="POST">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input class="form-control" type="text" name="username" placeholder="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control" type="password" name ="password" placeholder="password">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                        </div>
+                    </form>
+                    <h4>Don't have an account? <a href="/register">Register!</a></h4>
+                    <h4><a href="/restaurants">Go Back</a></h4>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 
 <%include ./partials/footer%>
 

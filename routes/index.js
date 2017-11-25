@@ -14,10 +14,11 @@ router.get("/home", function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("home", {restaurant:allRestaurants, currentUser: req.user});
+            res.render("home", {restaurant: allRestaurants, restaurantJSON: JSON.stringify(allRestaurants), currentUser: req.user});
         }
     });
 });
+
 
 router.get("/help/faq", function(req, res){
     res.render("help/faq");

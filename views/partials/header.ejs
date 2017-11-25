@@ -8,7 +8,7 @@
     </head>
     <body>
     <div class="navbar-wrapper">
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/home">2Dinein</a>
@@ -17,7 +17,7 @@
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="/restaurants">Restaurants</a></li>
                     </ul>
-                    <ul class="nav  navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
                         <% if(!currentUser) { %>
                             <li><a href="/login">Login</a></li>
                             <li><a href="/register">Sign Up</a></li>
@@ -32,7 +32,6 @@
         </nav>
     </div>
     
-    
     <div class="container">
         <% if(error && error.length > 0) { %>
             <div class="alert alert-danger" role="alert">
@@ -45,5 +44,3 @@
             </div>
         <% } %>
     </div>
-
-    

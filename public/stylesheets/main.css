@@ -147,9 +147,13 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  /*padding-bottom: 40px;*/
+  padding-top: 60px;
   color: #5a5a5a;
   height: 100%;
+}
+
+.viewheight-class {
+  min-height: 68vh;
 }
 
 
@@ -206,8 +210,9 @@ body {
   top: 0;
   left: 0;
   min-width: 100%;
-  height: 500px;
+  height: auto;
 }
+
 
 
 /* MARKETING CONTENT
