@@ -4,6 +4,7 @@ var Restaurant  = require("../models/restaurant"),
     Review     = require("../models/review");
     
 var middleware = require("../middleware");
+var moment = require('moment');
 
 // NEW ROUTE
 router.get("/new", middleware.isLoggedIn, function(req, res){
@@ -30,6 +31,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                     // add username and id to review
                     review.author.id = req.user._id;
                     review.author.username = req.user.username;
+                    review.createdAt = moment();
                     // save review
                     review.save();
                     restaurant.reviews.push(review);

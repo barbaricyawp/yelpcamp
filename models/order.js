@@ -28,7 +28,15 @@ var orderSchema = mongoose.Schema({
        },
        firstName: String,
        lastName: String
-   }
+   },
+   submittedAt: {type: Date, defaut: Date.now},
+   status: Number,
+   foodTotal: Number,
+   foodTax: Number,
+   deliveryFee: Number,
+   driverTip: Number,
+   customerTotal: Number,
+   cashOrder: Boolean,
 });
 
 module.exports = mongoose.model("Order", orderSchema);
