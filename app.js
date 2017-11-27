@@ -16,7 +16,8 @@ var express         = require('express'),
     reviewRoutes        = require("./routes/reviews"),
     restaurantRoutes    = require("./routes/restaurants"),
     adminRoutes         = require("./routes/admin"),
-    indexRoutes         = require("./routes/index");
+    indexRoutes         = require("./routes/index"),
+    orderRoutes         = require("./routes/orders");
 
 // DB CONFIG    
 mongoose.Promise = global.Promise;
@@ -54,6 +55,7 @@ app.use("/", indexRoutes);
 app.use("/restaurants", restaurantRoutes);
 app.use("/restaurants/:id/reviews", reviewRoutes);
 app.use("/admin", adminRoutes);
+app.use("/orders", orderRoutes);
 
 // RUN SERVER
 app.listen(process.env.PORT, process.env.IP, function(){

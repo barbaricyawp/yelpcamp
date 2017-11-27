@@ -6,13 +6,18 @@ var UserSchema = new mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
-    address1: String,
-    address2: String,
-    city: String,
-    state: String,
-    zipCode: String,
     phoneNumber: Number,
-    role: String,
+    birthDate: Date,
+    role: {type: String, default: "Customer"},
+    address: [
+        {
+            address1: String,
+            address2: String,
+            city: String,
+            state: String,
+            zipCode: String,
+        }
+    ],
     orders: [
         {
             type: mongoose.Schema.Types.ObjectId,

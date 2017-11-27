@@ -156,6 +156,10 @@ body {
   min-height: 68vh;
 }
 
+.alert {
+  padding-top: 20px;
+}
+
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
