@@ -39,7 +39,7 @@ router.post("/", function(req, res){
 // /user/:id GET
 // USER PROFILE PAGE LINK
 router.get("/:id", function(req, res){
-    User.findById(req.user._id, function(err, foundUser){
+    User.findById(req.user.id, function(err, foundUser){
         if(err){
             req.flash("error", "DB ERROR: User not found!");
             res.redirect("back");

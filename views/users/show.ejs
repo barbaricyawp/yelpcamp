@@ -5,45 +5,96 @@
         <h1>User Profile <small><%= user.username %></small></h1>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    		<form role="form" action="/users" method="POST">
-    			<div class="row">
-    				<div class="col-xs-12 col-sm-6 col-md-6">
-    					<div class="form-group">
-                            <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name" tabindex="1" value="<%=user.firstName%>">
-    					</div>
-    				</div>
-    				<div class="col-xs-12 col-sm-6 col-md-6">
-    					<div class="form-group">
-    						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name" tabindex="2" value="<%=user.lastName%>">
-    					</div>
-    				</div>
-    			</div>
-    			<div class="form-group">
-    				<input type="email" name="username" id="username" class="form-control input-lg" placeholder="email@example.com" tabindex="3" value="<%=user.username%>">
-    			</div>
-    			<div class="form-group">
-    				<input type="text" name="phoneNumber" id="phoneNumber" class="form-control input-lg" placeholder="(207) 555-5555" tabindex="4" value="<%=user.phoneNumber%>">
-    			</div>
-    			<div class="row">
-    				<div class="col-xs-12 col-sm-6 col-md-6">
-    					<!--<div class="form-group">-->
-    					<!--	<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">-->
-    					<!--</div>-->
-    				</div>
-    				<div class="col-xs-12 col-sm-6 col-md-6">
-    					<div class="form-group">
-    						<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
-    					</div>
-    				</div>
-    			</div>
-    			<hr>
-    			<div class="row">
-    			    <div class="col-xs-12 col-md-6"></div>
-    				<div class="col-xs-12 col-md-6"><input type="submit" value="Update Info" class="btn btn-primary btn-block btn-lg" tabindex="6"></div>
-    			</div>
-    		</form>
+        <div class="col-xs-12 col-sm-8 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">User Information</h3>
+                </div>
+                <div class="panel-body">
+            		<form role="form" action="/users" method="POST">
+            			<div class="row">
+            				<div class="col-xs-12 col-sm-6 col-md-6">
+            					<div class="form-group">
+            					    <label class="control-label" for="firstName">First Name</label>
+                                    <input type="text" name="firstName" id="firstName" class="form-control input-md" placeholder="First Name" tabindex="1" value="<%=user.firstName%>">
+            					</div>
+            				</div>
+            				<div class="col-xs-12 col-sm-6 col-md-6">
+            					<div class="form-group">
+            					    <label class="control-label" for="lastName">Last Name</label>
+            						<input type="text" name="lastName" id="lastName" class="form-control input-md" placeholder="Last Name" tabindex="2" value="<%=user.lastName%>">
+            					</div>
+            				</div>
+            			</div>
+            			<div class="form-group">
+            			    <label class="control-label" for="username">Email Address</label>
+            				<input type="email" name="username" id="username" class="form-control input-md" placeholder="email@example.com" tabindex="3" value="<%=user.username%>">
+            			</div>
+            			<div class="form-group">
+            			    <label class="control-label" for="phoneNumber">Phone Number</label>
+            				<input type="text" name="phoneNumber" id="phoneNumber" class="form-control input-md" placeholder="(207) 555-5555" tabindex="4" value="<%=user.phoneNumber%>">
+            			</div>
+            			<div class="row">
+            				<div class="col-xs-12 col-sm-6 col-md-6">
+            					<!--<div class="form-group">-->
+            					<!--	<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">-->
+            					<!--</div>-->
+            				</div>
+            				<div class="col-xs-12 col-sm-6 col-md-6">
+            					<div class="form-group">
+            					    <label class="control-label" for="password">Password</label>
+            						<input type="password" name="password" id="password" class="form-control input-md" placeholder="Password" tabindex="5" readonly>
+            					</div>
+            				</div>
+            			</div>
+            			<hr>
+            			<div class="row">
+            			    <div class="col-xs-12 col-md-6"></div>
+            				<div class="col-xs-12 col-md-6"><input type="submit" value="Update Info" class="btn btn-primary btn-block btn-lg" tabindex="6"></div>
+            			</div>
+            		</form>
+	            </div>
+    		</div>
     	</div>
+    	<div class="col-xs-12 col-sm-8 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Delivery Addresses</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Address</h3>
+                        </div>
+                        <div class="panel-body">
+                            <address>
+                              <strong>Home</strong><br>
+                              47 Pleasant St, Apt 2<br>
+                              Saco, ME 04072<br>
+                              <abbr title="Phone">P:</abbr> (207) 766-1434
+                            </address>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Address</h3>
+                        </div>
+                        <div class="panel-body">
+                            <address>
+                              <strong>Work</strong><br>
+                              125 John Roberts Road, Unit 2<br>
+                              South Portland, ME 04106<br>
+                              <abbr title="Phone">P:</abbr> (207) 799-3463
+                            </address>
+                        </div>
+                    </div>
+        			<div class="row">
+        			    <div class="col-xs-12 col-md-6"></div>
+        				<div class="col-xs-12 col-md-6"><input type="submit" value="Add New Address" class="btn btn-primary btn-block btn-lg" tabindex="6"></div>
+        			</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
