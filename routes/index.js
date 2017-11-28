@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var faker = require('faker');
 var User = require("../models/user");
 var Restaurant  = require("../models/restaurant");
 
@@ -24,6 +25,33 @@ router.get("/help/faq", function(req, res){
     res.render("help/faq");
 });
 
+
+// TEST USER ROUTE
+router.post("/testuser", function(req, res){
+    var randomusername = faker.internet.email(),
+        randomfirstName = faker.name.firstName(),
+        randomlastName = faker.name.lastName(),
+        randomphoneNumber = faker.phone.phoneNumber(),
+        randomPassword = faker.internet.password();
+    var newUser = new User(
+        {
+            username: randomusername,
+            firstName: randomfirstName,
+            lastName: randomlastName,
+            phoneNumber: randomphoneNumber,
+        }
+    );
+    User.register(newUser, randomPassword, function(err, user){
+        if(err) {
+            req.flash("error", "Error: " + err.message + "!");
+            return res.redirect("back");
+        }
+        passport.authenticate("local")(req, res, function(){
+            req.flash("success", "Test user " + user.username + " created!");
+            res.redirect("back");
+        });
+    });
+});
 
 // ===========
 // AUTH ROUTES

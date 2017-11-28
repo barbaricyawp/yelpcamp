@@ -6,6 +6,7 @@ var express         = require('express'),
     LocalStrategy   = require('passport-local'),
     methodOverride  = require('method-override'),
     flash           = require('connect-flash'),
+    faker           = require('faker'),
     
     // MODELS
     Restaurant  = require("./models/restaurant"),
