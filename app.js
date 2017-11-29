@@ -64,4 +64,3 @@ app.use("/users", userRoutes);
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("Server has Started...");
 });
-

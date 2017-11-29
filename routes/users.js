@@ -57,6 +57,29 @@ router.get("/:id", function(req, res){
 // DESTROY - USER ROUTE
 // /user/:id DELETE
 
+// UPDATE - USER ADDRESS
+router.put("/:id", function(req, res){
+    var name = req.params.name,
+        address1 = req.params.address1,
+        address2 = req.params.address2,
+        city = req.params.city,
+        state = req.params.state,
+        zipCode = req.params.zipCode;
+    User.findByIdAndUpdate(
+        req.user.id,
+        {$push: {"address": {name: name, address1: address1, address2: address2, city: city, state: state, zipCode: zipCode}}},
+        {safe: true, upsert: true, new : true},
+        function(err) {
+            if(err){
+                res.redirect("back");
+            } else {
+                req.flash("success", "Address Added!");
+                res.redirect("/users/" + req.user.id);
+            }
+        }
+    );
+});
+
 // TEST USER ROUTE
 router.post("/testuser", function(req, res){
     var randomusername = faker.internet.email(),

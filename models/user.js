@@ -11,6 +11,7 @@ var UserSchema = new mongoose.Schema({
     role: {type: String, default: "Customer"},
     address: [
         {
+            name: String,
             address1: String,
             address2: String,
             city: String,

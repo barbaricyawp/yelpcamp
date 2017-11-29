@@ -63,39 +63,109 @@
                 </div>
                 <div class="panel-body">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Address</h3>
-                        </div>
-                        <div class="panel-body">
-                            <address>
-                              <strong>Home</strong><br>
-                              47 Pleasant St, Apt 2<br>
-                              Saco, ME 04072<br>
-                              <abbr title="Phone">P:</abbr> (207) 766-1434
-                            </address>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Address</h3>
-                        </div>
-                        <div class="panel-body">
-                            <address>
-                              <strong>Work</strong><br>
-                              125 John Roberts Road, Unit 2<br>
-                              South Portland, ME 04106<br>
-                              <abbr title="Phone">P:</abbr> (207) 799-3463
-                            </address>
-                        </div>
+                        <% if(user.address.length > 0){ %>
+                            <% for(var i=0; i < user.address.length; i++){ %>
+                                <div class="panel-body">
+                                    <address>
+                                        <strong><%=user.address[i].name%></strong><br>
+                                        <%=user.address[i].address1%>, <%=user.address[i].address2%><br>
+                                        <%=user.address[i].city%>, <%=user.address[i].state%> <%=user.address[i].zipCode%><br>
+                                        P: <%=user.address[i].phoneNumber%>
+                                    </address>
+                                </div>
+                            <% } %>
+                        <% } else { %>
+                        <h4>No Delivery Addresses</h4>
+                        <% } %>
                     </div>
         			<div class="row">
         			    <div class="col-xs-12 col-md-6"></div>
-        				<div class="col-xs-12 col-md-6"><input type="submit" value="Add New Address" class="btn btn-primary btn-block btn-lg" tabindex="6"></div>
+        				<div class="col-xs-12 col-md-6"><button class="btn btn-primary btn-block btn-lg" tabindex="6" href="#" data-toggle="modal" data-target="#newAddressM">Add a new Address</div>
         			</div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="newAddressM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal-dialog modal-lg">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    				<h4 class="modal-title" id="myModalLabel">ADD A NEW DELIVERY ADDRESS</h4>
+    			</div>
+    			<div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                          <form class="form-horizontal" role="form" action="/users/<%=user._id%>?_method=PUT" method="POST">
+                            <fieldset>
+                    
+                              <!-- Form Name -->
+                              <legend>Address Details</legend>
+                    
+                              <!-- Text input-->
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">Name</label>
+                                <div class="col-sm-10">
+                                  <input type="text" placeholder="i.e. Home, Work, etc..." class="form-control" name="name">
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">Line 1</label>
+                                <div class="col-sm-10">
+                                  <input type="text" placeholder="Address Line 1" class="form-control" name="address1">
+                                </div>
+                              </div>
+                    
+                              <!-- Text input-->
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">Line 2</label>
+                                <div class="col-sm-10">
+                                  <input type="text" placeholder="Address Line 2" class="form-control" name="address2">
+                                </div>
+                              </div>
+                    
+                              <!-- Text input-->
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">City</label>
+                                <div class="col-sm-10">
+                                  <input type="text" placeholder="City" class="form-control" name="city">
+                                </div>
+                              </div>
+                    
+                              <!-- Text input-->
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">State</label>
+                                <div class="col-sm-4">
+                                  <input type="text" placeholder="State" class="form-control name="state"">
+                                </div>
+                    
+                                <label class="col-sm-2 control-label" for="textinput">Zip Code</label>
+                                <div class="col-sm-4">
+                                  <input type="text" placeholder="Zip Code" class="form-control" name="zipCode">
+                                </div>
+                              </div>
+                    
+                              <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                  <div class="pull-right">
+                                    <button type="submit" class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                  </div>
+                                </div>
+                              </div>
+                    
+                            </fieldset>
+                          </form>
+                        </div><!-- /.col-lg-12 -->
+                    </div><!-- /.row -->
+                </div>
+    			<div class="modal-footer">
+    				<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+    			</div>
+    		</div><!-- /.modal-content -->
+    	</div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>
 
 <%include ../partials/footer%>
